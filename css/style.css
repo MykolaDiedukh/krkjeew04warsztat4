@@ -10,3 +10,7 @@ h1{
     background-color: aquamarine;
     font-size: smaller;
 }
+
+.delete-book-btn{
+    background-color: hotpink;
+}
