@@ -5,3 +5,8 @@ h1{
 .book-title{
     background-color: bisque;
 }
+
+.description{
+    background-color: aquamarine;
+    font-size: smaller;
+}
