@@ -62,7 +62,7 @@ $(function () {
             typeDiv.text("type: " + book.type);
 
             var isbnDiv = $("<div>");
-            isbnDiv.text("isbn: " + book.type);
+            isbnDiv.text("isbn: " + book.isbn);
 
             descriptionDiv.append(authorDiv);
             descriptionDiv.append(publisherDiv);
@@ -83,6 +83,7 @@ $(function () {
             type : this.elements.type.value,
             isbn : this.elements.isbn.value,
         }
+        console.log(book);
 
         $.ajax({
             url: "http://localhost:8282/books",
