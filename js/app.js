@@ -3,8 +3,11 @@ $(function () {
     //curl -X POST -i -H "Content-Type: application/json" -d '{"isbn":"34321","title":"Potop", "publisher":"Ossolineum","type":"belerystyka","author":"Sienkiewicz"}' http://localhost:8282/books
 
     var bookListDiv = $(".book-list");
-
     bookListDiv.on("click", ".book-title", handleTitleClick);
+
+    var addBookForm = $(".add-book-form");
+
+    addBookForm.on("submit", handleAddBookSubmit);
 
     refreshBookList();
 
@@ -70,6 +73,29 @@ $(function () {
         }).fail(function (xhr, status, err) {
             console.log(xhr, status, err);
         });
+    }
+
+    function handleAddBookSubmit() {
+        var book = {
+            title : this.elements.title.value,
+            author : this.elements.author.value,
+            publisher : this.elements.publisher.value,
+            type : this.elements.type.value,
+            isbn : this.elements.isbn.value,
+        }
+
+        $.ajax({
+            url: "http://localhost:8282/books",
+            type: "POST",
+            data: JSON.stringify(book),
+            contentType : "application/json; charset=urf-8",
+            dataType: "json",
+        }).done(function () {
+            refreshBookList();
+        }).fail(function (xhr, status, err) {
+            console.log(xhr, status, err);
+        });
+        return false;
     }
 
 }) // DOMContentLoaded
